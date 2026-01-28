@@ -392,39 +392,10 @@ body.menu-open .nav-menu { display: block; }
   .callout { grid-template-columns: 1.2fr .8fr; align-items: center; }
 }
 
-/* ========== Providers Carousel (New) ========== */
-.carousel-nav {
-  display: flex; gap: .5rem;
-}
-.nav-btn {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.5);
-  display: grid; place-items: center;
-  font-size: 1.2rem;
-  color: var(--brand-3);
-  cursor: pointer;
-  transition: all .2s;
-}
-.nav-btn:hover {
-  background: var(--brand-3);
-  color: #fff;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 1rem 0 2rem; /* space for shadow */
-  scrollbar-width: none; /* Firefox */
-}
-.carousel-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+/* ========== Providers Grid (Restored) ========== */
+.provider-grid { display: grid; gap: 1rem; }
 
 .provider-card {
-  flex: 0 0 320px; /* Fixed width for cards */
-  scroll-snap-align: start;
   display: flex; flex-direction: column;
   padding: 1.2rem;
   border-radius: var(--radius);
@@ -432,6 +403,7 @@ body.menu-open .nav-menu { display: block; }
   background: rgba(255,255,255,.75);
   box-shadow: 0 12px 26px rgba(29,26,22,.05);
   transition: transform .3s ease;
+  height: 100%; /* Ensure equal height in grid */
 }
 .provider-card:hover { transform: translateY(-4px); }
 
@@ -449,6 +421,13 @@ body.menu-open .nav-menu { display: block; }
 }
 .p-content h3 { font-size: 1.25rem; font-weight: 900; }
 .mt-auto { margin-top: auto; padding-top: 1rem; }
+
+@media (min-width: 600px) {
+  .provider-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .provider-grid { grid-template-columns: repeat(4, 1fr); }
+}
 
 /* ========== Payment Panels ========== */
 .two-col { display: grid; gap: 1rem; }
