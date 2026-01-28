@@ -300,30 +300,81 @@
 
     <section class="section" id="providers">
       <div class="container">
-        <div class="section-head">
-          <h2>Our providers</h2>
-          <p>Experienced clinicians offering care across Nashville, Brentwood, Franklin, and teletherapy.</p>
+        <div class="section-head row">
+          <div>
+            <h2>Our providers</h2>
+            <p>Experienced clinicians offering care across Nashville, Brentwood, Franklin, and teletherapy.</p>
+          </div>
+          
+          <div class="carousel-nav">
+            <button class="nav-btn" id="prevBtn" aria-label="Previous provider">←</button>
+            <button class="nav-btn" id="nextBtn" aria-label="Next provider">→</button>
+          </div>
         </div>
 
-        <div class="provider-grid">
-          <article class="provider">
-            <div class="avatar">
-              <img src="provider-noah-zapf.webp" alt="Dr. Noah Zapf" width="320" height="320" loading="lazy" decoding="async" />
+        <div class="carousel-track" id="carouselTrack">
+          
+          <article class="provider-card">
+            <div class="p-avatar">
+              <img src="provider-noah-zapf.webp" alt="Dr. Noah Zapf" loading="lazy" decoding="async" />
             </div>
-            <div class="provider-body">
+            <div class="p-content">
               <h3>Dr. Noah Zapf</h3>
-              <p class="meta">PhD, LPC-MHSP • Licensed Professional Counselor</p>
+              <p class="meta">PhD, LPC-MHSP</p>
               <p class="p">
-                Focus areas include trauma, sexual addiction, anxiety, anger, and relationship dynamics.
-                Integrative, collaborative care using modalities such as EMDR, TF-CBT, EFT, and Brainspotting.
+                Focus on trauma, sexual addiction, anxiety, anger, and relationship dynamics.
+                Integrative care using EMDR, TF-CBT, EFT, and Brainspotting.
               </p>
-              <div class="provider-actions">
-                <a class="btn btn-ghost" href="#appointment">Contact</a>
-                <a class="btn btn-primary" href="#appointment">Request appointment</a>
-              </div>
+              <a class="link-soft mt-auto" href="#appointment">Book appointment</a>
             </div>
           </article>
-          </div>
+
+          <article class="provider-card">
+            <div class="p-avatar">
+              <img src="provider-rob-fitzpatrick.webp" alt="Rob Fitzpatrick" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-content">
+              <h3>Rob Fitzpatrick</h3>
+              <p class="meta">LPC-MHSP</p>
+              <p class="p">
+                Experienced across inpatient and community mental health.
+                Trauma focused, evidence based approach with training in EMDR and NMT.
+              </p>
+              <a class="link-soft mt-auto" href="#appointment">Book appointment</a>
+            </div>
+          </article>
+
+          <article class="provider-card">
+            <div class="p-avatar">
+              <img src="provider-drea-cook.webp" alt="Drea Cook" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-content">
+              <h3>Drea Cook</h3>
+              <p class="meta">LMFT, PhD (Candidate)</p>
+              <p class="p">
+                Relational trauma therapy for complex PTSD and couples.
+                Attachment based, parts oriented care including IFS, IFIO, and EMDR.
+              </p>
+              <a class="link-soft mt-auto" href="#appointment">Book appointment</a>
+            </div>
+          </article>
+
+          <article class="provider-card">
+            <div class="p-avatar">
+              <img src="provider-carla-archuletta.webp" alt="Carla Archuletta" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-content">
+              <h3>Carla Archuletta</h3>
+              <p class="meta">LPC/MHSP-S, FT</p>
+              <p class="p">
+                Support for anxiety, depression, burnout, and grief.
+                EMDR trained, practical and grounded care for medical challenges and loss.
+              </p>
+              <a class="link-soft mt-auto" href="#appointment">Book appointment</a>
+            </div>
+          </article>
+
+        </div>
       </div>
     </section>
 
@@ -551,6 +602,7 @@
   </footer>
 
   <script>
+    // Navigation toggle
     const btn = document.querySelector(".nav-toggle");
     const menu = document.getElementById("navMenu");
     function closeMenu() {
@@ -565,7 +617,22 @@
     menu?.addEventListener("click", (e) => {
       if (e.target.tagName === "A" && document.body.classList.contains("menu-open")) closeMenu();
     });
+    
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Carousel Logic
+    const track = document.getElementById('carouselTrack');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+
+    if (track && nextBtn && prevBtn) {
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: 340, behavior: 'smooth' });
+      });
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -340, behavior: 'smooth' });
+      });
+    }
   </script>
 </body>
 </html>
